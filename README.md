@@ -5,10 +5,11 @@ Goolge Scholar G-Index
  - The script can be used as a Greasemonkey/Scriptish/Tampermonkey script
  - Or, you may just create a browser bookmark with the following:
 
-```
+```javascript
 javascript:(function(){
-  d=document;s=d.createElement("script");
-  s.src="http://github.com/gsbabil/google-scholar-gindex/raw/master/Google_Scholar_G-Index.user.js";
-  d.getElementsByTagName("head")[0].appendChild(s);
+ d=document;
+ s=d.createElement("script");
+ s.src="http://github.com/gsbabil/google-scholar-gindex/raw/master/Google_Scholar_G-Index.user.js";
+ d.getElementsByTagName("head")[0].appendChild(s);
 })();
 ```
