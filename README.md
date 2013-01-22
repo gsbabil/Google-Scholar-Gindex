@@ -1,4 +1,4 @@
-Total and G-Index Count in Google Scholar Profile
+G-Index and Publication Count in Google Scholar Profile
 -------------------------------------------------
 
  - It's a small piece of Java-script that calculates and adds [G-Index](http://en.wikipedia.org/wiki/G-index). on Google Scholar Profile pages
