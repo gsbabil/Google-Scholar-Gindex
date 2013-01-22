@@ -25,13 +25,18 @@ var spinner = null;
 
 loadJquery();
 
-function main() {
-  $(document).ready(function(){
-    showPopup("Calculating G-index ...", config.good_popup_color);
-    spinner = showSpinner($('body'), new Date().getTime());
-    addGindex();
-  });
-}
+window.setTimeout(function(){
+  if (window.jQuery) {
+    $(document).ready(function(){
+      if ($("head").data("gindexed") != 1) {
+        showPopup("Calculating G-index ...", config.good_popup_color);
+        spinner = showSpinner($('body'), new Date().getTime());
+        addGindex();
+        $(spinner).remove();
+      }
+    });
+  }
+});
 
 function loadJquery() {
   (function() {
@@ -51,8 +56,6 @@ function loadJquery() {
       };
     checkReady(function($) {});
   })();
-
-  main();
 }
 
 function addGindex() {
@@ -76,8 +79,7 @@ function addGindex() {
 
   html = '<tr><td style="text-align:left"><a href="http://en.wikipedia.org/wiki/G-index">g-index</a></td><td>' + (gindex-1) + '</td><td>N/A</td></tr>';
   $(html).appendTo($("table#stats > tbody > tr").last().parent());
-
-  $(spinner).remove();
+  $("head").data("gindexed", 1);
 }
 
 function spinnerCss() {
