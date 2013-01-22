@@ -6,8 +6,6 @@ Total and G-Index Count in Google Scholar Profile
  - Or, you may just create a browser bookmark with the following Javascript URL
  - Once the Google Scholar profile is loaded, just click the bookmark and it'll automatically calculate and add G-Index beneath the H-Index and i10-Index on the same page.
 
-[Bookmarklet](%28function%28%29%7Bd%3Ddocument%3Bs%3Dd.createElement%28%22script%22%29%3Bs.src%3D%22https%3A//raw.github.com/gsbabil/Google-Scholar-Gindex/master/Google_Scholar_G-Index.user.js%22%3Bd.getElementsByTagName%28%22head%22%29%5B0%5D.appendChild%28s%29%3B%7D%29%28%29%3B)
-
 ```javascript
 javascript:(function(){
  d=document;
