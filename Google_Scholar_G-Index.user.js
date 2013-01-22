@@ -161,7 +161,7 @@ function popupCss(color) {
     'opacity': '0.75',
     'color' : 'black',
     'min-width': '15em',
-    'font-size': '12px',
+    'font-size': '14px',
   });
 }
 
