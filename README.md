@@ -14,5 +14,6 @@ javascript:(function(){
 })();
 ```
 
- - Here's a screenshot showing how to add the bookmark in chrome:
+ - Here's a screenshot showing how to add the bookmark in Google Chrome:
+
 ![Creating Bookmark in Chrome](http://github.com/gsbabil/google-scholar-gindex/raw/master/bookmark-screenshot-chrome.png)
