@@ -8,7 +8,7 @@
 // @downloadURL    http://github.com/gsbabil/google-scholar-gindex/raw/master/Google_Scholar_G-Index.user.js
 // @iconURL        http://gravatar.com/avatar/10f6c9d84191bcbe69ce41177087c4d7
 // @author         gsbabil <gsbabil@gmail.com>
-// @version        0.0.2
+// @version        0.0.3
 // ==/UserScript==
 
 var config = {
@@ -33,12 +33,19 @@ main();
 function main() {
   main_timer = window.setTimeout(main, 1000);
 
-  spinner = $("div[id*='spinner_']");
-  if ($(spinner).length == 0) {
-    var spinner = showSpinner($('body'), new Date().getTime());
-  }
-
   if (window.jQuery) {
+    if ($("head").data("gindexed") == 1) {
+      showPopup("G-Index already calculated.", config.bad_popup_color);
+      window.clearTimeout(main_timer);
+      $("head").data("gindexed", 1);
+      return;
+    }
+
+    spinner = $("div[id*='spinner_']");
+    if ($(spinner).length == 0) {
+      var spinner = showSpinner($('body'), new Date().getTime());
+    }
+
     $(document).ready(function(){
       $("head").data("all_pages_loaded", 0);
       $("head").data("gindexed", 0);
@@ -135,7 +142,7 @@ function popupCss(color) {
     'left': 5,
     'background-color': last_popup_color,
     'padding': '0.1em',
-    'min-width': '10em',
+    'min-height': '16px',
     'border-color': '#000',
     'border-style': 'solid',
     'border-width': '1.5px',
@@ -143,7 +150,8 @@ function popupCss(color) {
     'z-index': '10000',
     'opacity': '0.75',
     'color' : 'black',
-    'min-width': '14em',
+    'min-width': '15em',
+    'font-size': '12px',
   });
 }
 
