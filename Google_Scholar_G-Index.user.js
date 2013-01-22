@@ -83,6 +83,10 @@ function loadJquery() {
 }
 
 function addGindex() {
+  /* Babil: credit to Guido Governatori for the original algorithm.
+   * Guido's Ruby script is here: http://www.governatori.net/gindex.rb
+   */
+
   links = $("a[href*='cites']");
   links.each(function(i, link){
       gindex = gindex + 1;
