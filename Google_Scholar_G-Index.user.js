@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           Google Scholar G-Index
 // @namespace      https://github.com/gsbabil
-// @description    Calculates and adds G-Index in Google Scholar Profile
+// @description    Adds G-Index and total publication count in Google Scholar Profile
 // @require        http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js
 // @include        http*://scholar.google.com.au/citations?*user=*
 // @updateURL      http://github.com/gsbabil/google-scholar-gindex/raw/master/Google_Scholar_G-Index.user.js
@@ -84,7 +84,8 @@ function loadJquery() {
 }
 
 function addGindex() {
-  /* Babil: credit to Guido Governatori for the original algorithm.
+  /*
+   * Babil: credit to Guido Governatori for the original algorithm.
    * Guido's Ruby script is here: http://www.governatori.net/gindex.rb
    */
 
@@ -122,11 +123,13 @@ function spinnerCss() {
     'left': 5,
     'padding': '0.1em',
     'z-index': '10000',
+    'height' : '16px',
+    'width' : '16px',
   });
 }
 
 function showSpinner(element, id) {
-  $('<div id=spinner_' + id + '><img style="height: 16px; width: 16px" src=' + config.spinner + '></img></div>').prependTo($(element));
+  $('<div id=spinner_' + id + '><img src=' + config.spinner + '></img></div>').prependTo($(element));
 
   spinnerCss();
   return $('div#spinner_' + id);
@@ -203,7 +206,7 @@ function loadNextPage() {
 
       if (href != prev_href) {
         prev_href = href;
-        showPopup("Loading next page ... [" + cstart + "]", config.good_popup_color);
+        showPopup("Loading citations ... [" + cstart + "]", config.good_popup_color);
         var spinner = showSpinner();
 
         $("form#citationsForm").last().append("<span id='" + id + "'></span>");
