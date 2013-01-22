@@ -24,11 +24,14 @@ var hindex = 0;
 var spinner = null;
 
 loadJquery();
-$(document).ready(function(){
-  showPopup("Calculating G-index ...", config.good_popup_color);
-  spinner = showSpinner($('body'), new Date().getTime());
-  addGindex();
-});
+
+function main() {
+  $(document).ready(function(){
+    showPopup("Calculating G-index ...", config.good_popup_color);
+    spinner = showSpinner($('body'), new Date().getTime());
+    addGindex();
+  });
+}
 
 function loadJquery() {
   (function() {
@@ -48,6 +51,8 @@ function loadJquery() {
       };
     checkReady(function($) {});
   })();
+
+  main();
 }
 
 function addGindex() {
@@ -73,7 +78,6 @@ function addGindex() {
   $(html).appendTo($("table#stats > tbody > tr").last().parent());
 
   $(spinner).remove();
-  showPopup("Done.", config.good_popup_color);
 }
 
 function spinnerCss() {
