@@ -20,6 +20,7 @@ var config = {
 }
 
 var total_cites = 0;
+var total_publications = 0;
 var gindex = 0;
 var hindex = 0;
 var prev_href = "";
@@ -107,6 +108,11 @@ function addGindex() {
 
   html = '<tr><td style="text-align:left"><a href="http://en.wikipedia.org/wiki/G-index">g-index</a></td><td>' + (gindex-1) + '</td><td>N/A</td></tr>';
   $(html).appendTo($("table#stats > tbody > tr").last().parent());
+
+  total_publications = $("td#col-year").length
+  var garbage = $("td#col-year").filter(function(){return($(this).text().match('Year'));}).length
+  html = '<tr><td style="text-align:left"><a href="' + location.href + '">Total Publications</a></td><td>' + (total_publications - garbage) + '</td><td>N/A</td></tr>';
+  $(html).appendTo($("table#stats > tbody > tr").first().parent());
 }
 
 function spinnerCss() {
