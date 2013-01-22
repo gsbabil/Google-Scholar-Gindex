@@ -3,7 +3,7 @@
 // @namespace      https://github.com/gsbabil
 // @description    Calculates and adds G-Index in Google Scholar Profile
 // @require        http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js
-// @include        http://scholar.google.com.au/citations?user=*
+// @include        http*://scholar.google.com.au/citations?*user=*
 // @updateURL      http://github.com/gsbabil/google-scholar-gindex/raw/master/Google_Scholar_G-Index.user.js
 // @downloadURL    http://github.com/gsbabil/google-scholar-gindex/raw/master/Google_Scholar_G-Index.user.js
 // @iconURL        http://gravatar.com/avatar/10f6c9d84191bcbe69ce41177087c4d7
@@ -16,27 +16,44 @@ var config = {
   'spinner' : 'data:image/gif;base64,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',
   'good_popup_color' : '#ADDD44',
   'bad_popup_color' : '#FF8400',
+  'debug' : true,
 }
 
 var total_cites = 0;
 var gindex = 0;
 var hindex = 0;
+var prev_href = "";
+var main_timer = null
+var load_next_page_timer = null;
 var spinner = null;
 
 loadJquery();
+main();
 
-window.setTimeout(function(){
+function main() {
+  main_timer = window.setTimeout(main, 1000);
+
+  spinner = $("div[id*='spinner_']");
+  if ($(spinner).length == 0) {
+    var spinner = showSpinner($('body'), new Date().getTime());
+  }
+
   if (window.jQuery) {
     $(document).ready(function(){
-      if ($("head").data("gindexed") != 1) {
+      $("head").data("all_pages_loaded", 0);
+      $("head").data("gindexed", 0);
+
+      loadNextPage();
+      if ($("head").data("gindexed") != 1 && $("head").data("all_pages_loaded") == 1) {
         showPopup("Calculating G-index ...", config.good_popup_color);
-        spinner = showSpinner($('body'), new Date().getTime());
         addGindex();
-        $(spinner).remove();
+        $("head").data("gindexed", 1);
+        $("div[id*='spinner_']").remove();
+        window.clearTimeout(main_timer);
       }
     });
   }
-});
+}
 
 function loadJquery() {
   (function() {
@@ -79,7 +96,6 @@ function addGindex() {
 
   html = '<tr><td style="text-align:left"><a href="http://en.wikipedia.org/wiki/G-index">g-index</a></td><td>' + (gindex-1) + '</td><td>N/A</td></tr>';
   $(html).appendTo($("table#stats > tbody > tr").last().parent());
-  $("head").data("gindexed", 1);
 }
 
 function spinnerCss() {
@@ -125,7 +141,9 @@ function popupCss(color) {
     'border-width': '1.5px',
     'text-align': 'center',
     'z-index': '10000',
-    'opacity': '0.80',
+    'opacity': '0.75',
+    'color' : 'black',
+    'min-width': '14em',
   });
 }
 
@@ -137,5 +155,55 @@ function showPopup(text, color){
   window.setTimeout(function() {
     $("div#" + id).fadeOut('slow');
     $("div#" + id).remove();
-  }, 3000);
+  }, 1000);
+}
+
+function logDebug(msg, ignore) {
+  if(config.debug == true || ignore == true) {
+    console.debug(msg);
+  }
+}
+
+function loadNextPage() {
+  if($("head").data("loadNextPage_inprogress") != 1) {
+    $("head").data("loadNextPage_inprogress", 1);
+    next = $("a[href*='cstart']").filter(function(){return($(this).text().match('Next >'));}).last();
+
+    if(next.length > 0) {
+      var href = next[next.length - 1].href;
+      var cstart = href.replace(new RegExp('.*cstart=(\\d+)$', 'i'), '$1');
+      var id = "loadNextPage_" + cstart;
+      logDebug("loadNextPage --> href: " + href);
+      logDebug("loadNextPage --> prev_href: " + prev_href);
+
+      if (href == prev_href) {
+        logDebug("Reached end of all pages!");
+        // window.clearTimeout(load_next_page_timer);
+        $("head").data("all_pages_loaded", 1);
+        return;
+      }
+
+      if (href != prev_href) {
+        prev_href = href;
+        showPopup("Loading next page ... [" + cstart + "]", config.good_popup_color);
+        var spinner = showSpinner();
+
+        $("form#citationsForm").last().append("<span id='" + id + "'></span>");
+        $.ajax({
+          url: href,
+          cache: false,
+        }).done(function(html) {
+            var new_content = $("form#citationsForm", $(html));
+            $("span#" + id).first().replaceWith(new_content);
+            $("head").data("loadNextPage_inprogress", 0);
+            spinner.remove();
+        });
+        // load_next_page_timer = window.setTimeout(loadNextPage, 1000);
+      }
+    } else {
+      $("head").data("all_pages_loaded", 1);
+    }
+  } else {
+    logDebug("loadNextPage --> inprogress");
+  }
 }
