@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name           Google Scholar G-Index
 // @namespace      https://github.com/gsbabil
-// @description    Adds G-Index and total publication count in Google Scholar Profile
+// @description    Adds G-Index and publication count in Google scholar profile
 // @require        http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js
 // @include        http*://scholar.google.com.au/citations?*user=*
 // @updateURL      http://github.com/gsbabil/google-scholar-gindex/raw/master/Google_Scholar_G-Index.user.js
 // @downloadURL    http://github.com/gsbabil/google-scholar-gindex/raw/master/Google_Scholar_G-Index.user.js
 // @iconURL        http://gravatar.com/avatar/10f6c9d84191bcbe69ce41177087c4d7
 // @author         gsbabil <gsbabil@gmail.com>
-// @version        0.0.3
+// @version        0.0.4
 // ==/UserScript==
 
 var config = {
