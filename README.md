@@ -9,7 +9,7 @@ Goolge Scholar G-Index
 javascript:(function(){
  d=document;
  s=d.createElement("script");
- s.src="http://github.com/gsbabil/google-scholar-gindex/raw/master/Google_Scholar_G-Index.user.js";
+ s.src="https://github.com/gsbabil/Google-Scholar-Gindex/raw/master/Google_Scholar_G-Index.user.js";
  d.getElementsByTagName("head")[0].appendChild(s);
 })();
 ```
