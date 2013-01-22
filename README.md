@@ -1,6 +1,6 @@
 G-Index and Publication Count in Google Scholar Profile
 -------------------------------------------------
-![G-index and Total Publication Count Added by the Script](http://github.com/gsbabil/google-scholar-gindex/raw/master/gindex-total-count-screenshot.png)
+![G-index and Total Publication Count Added by the Script](https://raw.github.com/gsbabil/google-scholar-gindex/master/screenshots/gindex-total-count-screenshot.png)
 
  - This is a small piece of Java-script that calculates and adds [G-Index](http://en.wikipedia.org/wiki/G-index) and total publication count on Google scholar profile pages.
 
@@ -22,13 +22,13 @@ javascript:(function(){
  - Here's a screenshot showing how to add the bookmark in Google Chrome:
 
 <p align="center">
-  <img src="http://github.com/gsbabil/google-scholar-gindex/raw/master/bookmark-screenshot-chrome.png"/>
+  <img src="https://raw.github.com/gsbabil/google-scholar-gindex/master/screenshots/bookmark-screenshot-chrome.png"/>
 </p>
 
 
  - The following screenshot shows where the newly added bookmark goes. For ease of use, you should unhide your bookmark-bar and place your bookmark there.
 
-![Added Bookmar in Firefox's Bookmark-bar](http://github.com/gsbabil/google-scholar-gindex/raw/master/bookmark-bar-screenshot-firefox.png)
+![Added Bookmar in Firefox's Bookmark-bar](https://raw.github.com/gsbabil/google-scholar-gindex/master/screenshots/bookmark-bar-screenshot-firefox.png)
 
 
 Credit
