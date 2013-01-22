@@ -1,9 +1,9 @@
 Goolge Scholar G-Index
 ======================
 
- - Calculates and adds [G-Index](http://en.wikipedia.org/wiki/G-index). in Google Scholar Profile
+ - It's a small piece of Java-script that calculates and adds [G-Index](http://en.wikipedia.org/wiki/G-index). on Google Scholar Profile pages
  - The script can be used as a [Greasemonkey](http://en.wikipedia.org/wiki/Greasemonkey) / [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en) script
- - Or, you may just create a browser bookmark with the following Javascript URL.
+ - Or, you may just create a browser bookmark with the following Javascript URL
  - Once the Google Scholar profile is loaded, just click the bookmark and it'll automatically calculate and add G-Index beneath the H-Index and i10-Index on the same page.
 
 ```javascript
