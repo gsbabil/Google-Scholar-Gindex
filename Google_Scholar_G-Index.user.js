@@ -34,9 +34,23 @@ main();
 function main() {
   main_timer = window.setTimeout(main, 1000);
 
+  if (!window.jQuery) {
+    loadJquery();
+    return;
+  }
+
   if (window.jQuery) {
-    if ($("head").data("gindexed") == 1) {
-      showPopup("G-Index already calculated.", config.bad_popup_color);
+
+    /* Babil: when in bookmark-let, check if we are on the right page */
+    if (location.hostname.search("scholar.google.com") < 0 && location.href.search("user=") < 0) {
+      showPopup("Current page is <b>not</b> a <br /> Google scholar profile.", config.bad_popup_color);
+      window.clearTimeout(main_timer);
+      return;
+    }
+
+    /* Babil: check if the user is paranoid */
+    if ($("head").data("gindexed") == 1 || $("tr.gindex").length > 0) {
+      showPopup("G-Index already added.", config.bad_popup_color);
       window.clearTimeout(main_timer);
       $("head").data("gindexed", 1);
       return;
@@ -101,18 +115,18 @@ function addGindex() {
       }
 
       if (total_cites < (gindex * gindex)) {
-          console.debug("your g-index: " + (gindex - 1));
-          console.debug("your h-index: " + (hindex - 0));
+          logDebug("your g-index: " + (gindex - 1));
+          logDebug("your h-index: " + (hindex - 0));
           return false;
       }
   });
 
-  html = '<tr><td style="text-align:left"><a href="http://en.wikipedia.org/wiki/G-index">g-index</a></td><td>' + (gindex-1) + '</td><td>N/A</td></tr>';
+  html = '<tr class="gindex"><td style="text-align:left"><a href="http://en.wikipedia.org/wiki/G-index">g-index</a></td><td>' + (gindex-1) + '</td><td>N/A</td></tr>';
   $(html).appendTo($("table#stats > tbody > tr").last().parent());
 
   total_publications = $("td#col-year").length
   var garbage = $("td#col-year").filter(function(){return($(this).text().match('Year'));}).length
-  html = '<tr><td style="text-align:left"><a href="' + location.href + '">Total Publications</a></td><td>' + (total_publications - garbage) + '</td><td>N/A</td></tr>';
+  html = '<tr class="gindex"><td style="text-align:left"><a href="' + location.href + '">Total Publications</a></td><td>' + (total_publications - garbage) + '</td><td>N/A</td></tr>';
   $(html).appendTo($("table#stats > tbody > tr").first().parent());
 }
 
@@ -170,7 +184,7 @@ function popupCss(color) {
 
 function showPopup(text, color){
   var id = "popup_" + new Date().getTime();
-  $('<div class="popup" id=' + id + '>' + text + '</div>').prependTo('body');
+  $('<div class="popup" id=' + id + '>' + text + '</div>').prependTo('body').first();
   popupCss(color);
 
   window.setTimeout(function() {
