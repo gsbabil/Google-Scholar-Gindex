@@ -11,13 +11,9 @@ G-Index and Publication Count in Google Scholar Profile
  - If you are using the bookmark method, once the Google Scholar profile is loaded, just click the bookmark and it'll automatically calculate and add G-Index beneath the H-Index and i10-Index on the same page.
 
 ```javascript
-javascript:(function(){
- d=document;
- s=d.createElement("script");
- s.src="https://raw.github.com/gsbabil/Google-Scholar-Gindex/master/Google_Scholar_G-Index.user.js";
- d.getElementsByTagName("head")[0].appendChild(s);
-})();
+javascript:(function(){d=document;s=d.createElement("script"); s.src="https://raw.github.com/gsbabil/Google-Scholar-Gindex/master/Google_Scholar_G-Index.user.js?_"+new Date().getTime(); d.getElementsByTagName("head")[0].appendChild(s);})();
 ```
+
 
  - Here's a screenshot showing how to add the bookmark in Google Chrome:
 
