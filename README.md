@@ -6,9 +6,11 @@ G-Index and Publication Count in Google Scholar Profile
 
  - The script can be used as a [Greasemonkey](http://en.wikipedia.org/wiki/Greasemonkey) / [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo?hl=en) script. That way the G-index and total publication count  will be automatically added anytime a Google scholar profile page is visited.
  
- - Or, you may just create a browser bookmark with the following Javascript URL. Although this is the quickest way to use the script, it'll require you to click the bookmark button everytime you would like to calculate g-index.
+ - Or, you may just create a browser bookmark with the following Javascript URL. Although this is the quickest way to start using the script, it'll require you to click the bookmark button everytime you'll calculate g-index.
  
  - If you are using the bookmark method, once the Google Scholar profile is loaded, just click the bookmark and it'll automatically calculate and add G-Index beneath the H-Index and i10-Index on the same page.
+
+- To create a quick bookmark in your bookmark-bar, you may just select the whole Java-script code below, drag and drop it on your bookmark-bar.
 
 ```javascript
 javascript:(function(){d=document;s=d.createElement("script"); s.src="https://raw.github.com/gsbabil/Google-Scholar-Gindex/master/Google_Scholar_G-Index.user.js?_"+new Date().getTime(); d.getElementsByTagName("head")[0].appendChild(s);})();
