@@ -3,7 +3,7 @@
 // @namespace      https://github.com/gsbabil
 // @description    Adds G-Index and publication count in Google scholar profile
 // @require        http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js
-// @include        http*://scholar.google.com.au/citations?*user=*
+// @include        http*://scholar.google.com*/citations?*user=*
 // @updateURL      http://github.com/gsbabil/google-scholar-gindex/raw/master/Google_Scholar_G-Index.user.js
 // @downloadURL    http://github.com/gsbabil/google-scholar-gindex/raw/master/Google_Scholar_G-Index.user.js
 // @iconURL        http://gravatar.com/avatar/10f6c9d84191bcbe69ce41177087c4d7
