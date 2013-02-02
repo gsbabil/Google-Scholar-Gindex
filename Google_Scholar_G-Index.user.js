@@ -20,7 +20,7 @@ var config = {
 }
 
 var total_cites = 0;
-var total_publications = 0;
+var total_pubs = 0;
 var gindex = 0;
 var hindex = 0;
 var prev_href = "";
@@ -111,30 +111,26 @@ function addGindex() {
 
   links = $("a[href*='cites']");
   links.each(function(i, link){
-      gindex = gindex + 1;
+    gindex = gindex + 1;
 
-      var link_cites = parseInt($(link).text());
-      total_cites = total_cites + link_cites;
+    var link_cites = parseInt($(link).text());
+    total_cites = total_cites + link_cites;
 
-      if (hindex == 0 && link_cites < gindex) {
-          hindex = gindex - 1;
-      }
-
-      if (total_cites < (gindex * gindex)) {
-        gindex = (gindex<0 ? 0:gindex);
-
-        logDebug("your g-index: " + gindex);
-        logDebug("your h-index: " + hindex);
-        return false;
-      }
+    if (total_cites < (gindex * gindex)) {
+      gindex = gindex - 1;
+      gindex = (gindex<0 ? 0:gindex);
+    }
   });
+
+  logDebug("total_cites: " + total_cites);
+  logDebug("g-index: " + gindex);
 
   html = '<tr class="gindex"><td style="text-align:left"><a href="http://en.wikipedia.org/wiki/G-index">g-index</a></td><td>' + gindex + '</td><td>N/A</td></tr>';
   $(html).appendTo($("table#stats > tbody > tr").last().parent());
 
-  total_publications = $("td#col-year").length
-  var garbage = $("td#col-year").filter(function(){return($(this).text().match('Year'));}).length
-  html = '<tr class="gindex"><td style="text-align:left"><a href="' + location.href + '">Total Publications</a></td><td>' + (total_publications - garbage) + '</td><td>N/A</td></tr>';
+  total_pubs = $("td#col-year").length;
+  var garbage = $("td#col-year").filter(function(){return($(this).text().match('Year'));}).length;
+  html = '<tr class="gindex"><td style="text-align:left"><a href="' + location.href + '">Total Publications</a></td><td>' + (total_pubs - garbage) + '</td><td>N/A</td></tr>';
   $(html).appendTo($("table#stats > tbody > tr").first().parent());
 }
 
