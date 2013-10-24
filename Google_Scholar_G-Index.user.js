@@ -8,7 +8,7 @@
 // @downloadURL    http://github.com/gsbabil/google-scholar-gindex/raw/master/Google_Scholar_G-Index.user.js
 // @iconURL        http://gravatar.com/avatar/10f6c9d84191bcbe69ce41177087c4d7
 // @author         gsbabil <gsbabil@gmail.com>
-// @version        0.0.6
+// @version        0.0.7
 // ==/UserScript==
 
 var config = {
@@ -28,6 +28,7 @@ var main_timer = null
 var load_next_page_timer = null;
 var spinner = null;
 
+/* Babil: once jQuery is loaded, main() will be called */
 loadJquery();
 main();
 
@@ -72,12 +73,13 @@ function main() {
       $("head").data("gindexed", 0);
 
       loadNextPage();
+
       if ($("head").data("gindexed") != 1 && $("head").data("all_pages_loaded") == 1) {
         showPopup("Calculating G-index ...", config.good_popup_color);
         addGindex();
         $("head").data("gindexed", 1);
         $("div[id*='spinner_']").remove();
-        window.clearTimeout(main_timer);
+        // window.clearTimeout(main_timer);
       }
     });
   }
@@ -105,20 +107,23 @@ function loadJquery() {
 
 function addGindex() {
   /*
-   * Babil: credit to Guido Governatori for the original algorithm.
-   * Guido's Ruby script is here: http://www.governatori.net/gindex.rb
+   * Babil: credit is due to the authors of the following scripts:
+   * 1. Guido Governatori, http://www.governatori.net/gindex.rb
+   * 2. Rob van Glabbeek, http://www.cse.unsw.edu.au/~rvg/gindix.zip
    */
 
   links = $("a[href*='cites']");
+  var g = 0;
+
   links.each(function(i, link){
-    gindex = gindex + 1;
+    g = g + 1;
 
     var link_cites = parseInt($(link).text());
     total_cites = total_cites + link_cites;
 
-    if (total_cites < (gindex * gindex)) {
-      gindex = gindex - 1;
-      gindex = (gindex<0 ? 0:gindex);
+    if (total_cites >= (g * g)) {
+      logDebug("link_cites=" + link_cites + " g=" + g + " g * g=" + (g * g) + " total_cites=" + total_cites);
+      gindex = g;
     }
   });
 
