@@ -32,4 +32,4 @@ javascript:(function(){d=document;s=d.createElement("script"); s.src="https://ra
 Credit
 ------
 
-Credit is due to [Guido Governatori](http://www.governatori.net/) for his original [Ruby script](http://www.governatori.net/gindex.rb) to calculate G-index from off-line Google scholar page.
+Credit is due to [Guido Governatori](http://www.governatori.net/) for his [Ruby script](http://www.governatori.net/gindex.rb) and [Rob van Glabbeek](http://www.cse.unsw.edu.au/~rvg) for his [PERL script](http://www.cse.unsw.edu.au/~rvg/gindix.zip) to calculate G-index from off-line Google scholar HTML page.
