@@ -1,7 +1,8 @@
-# G-Index, Publication Count and more in Google Scholar Profile
+# G-Index, Publication Count and a lot more inside Google Scholar Profile
 
-![G-index and Total Publication Count Added by the
-Script](https://raw.github.com/gsbabil/google-scholar-gindex/master/screenshots/gindex-total-count-screenshot-2.png)
+<p align="center">
+  <img src="https://raw.github.com/gsbabil/google-scholar-gindex/master/screenshots/gindex-total-count-screenshot-2.png"/>
+</p>
 
 - This is a small piece of Java-script that calculates and adds
 [G-Index](http://en.wikipedia.org/wiki/G-index) and total publication count on
@@ -47,4 +48,4 @@ Credit is due to [Guido Governatori](http://www.governatori.net/) for his [Ruby
 script](http://www.governatori.net/gindex.rb) and [Rob van
 Glabbeek](http://www.cse.unsw.edu.au/~rvg) for his [PERL
 script](http://www.cse.unsw.edu.au/~rvg/gindix.zip) to calculate G-index from
-off-line Google scholar HTML page.
+_off-line_ Google scholar HTML page.
