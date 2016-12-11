@@ -19,7 +19,7 @@ for i in records
   $citations = $citations + i
   if $hindex == 0 and i <  $gindex
     $hindex = $gindex - 1
-  end 
+  end
   if $citations < ($gindex*$gindex)
     puts "Your g-index is: #{$gindex-1}"
     puts "Your h-index is: #{$hindex}"
