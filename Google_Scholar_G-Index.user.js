@@ -46,7 +46,7 @@ var pages_loaded = 1;
 main();
 
 function main() {
-    main_timer = window.setTimeout(main, 1000);
+    // main_timer = window.setTimeout(main, 1000);
 
     if (!window.jQuery) {
         loadJquery();
@@ -59,15 +59,21 @@ function main() {
             showPopup(
                 "Current page is <b>not</b> a <br /> Google scholar profile.",
                 config.bad_popup_color);
-            window.clearTimeout(main_timer);
+            // window.clearTimeout(main_timer);
             return;
         }
+
+        var sort_by = getURLParameter('sortby');
+        if (sort_by === undefined) {
+            sort_by = '';
+        }
+        debugLog("sort_by:" + sort_by);
 
         /* Babil: check if the user is paranoid */
         if (jQuery("head").data("gindexed") == 1 ||
             jQuery("tr.gindex").length > 0) {
             showPopup("G-Index already added.", config.bad_popup_color);
-            window.clearTimeout(main_timer);
+            // window.clearTimeout(main_timer);
             jQuery("head").data("gindexed", 1);
             return;
         }
@@ -76,9 +82,10 @@ function main() {
         if (location.href.indexOf("pagesize") < 0 ||
             location.href.indexOf("cstart") < 0) {
             var user_id = getURLParameter('user');
-            window.clearTimeout(main_timer);
+
+            // window.clearTimeout(main_timer);
             location.href = location.origin + "/citations?user=" + user_id +
-                            "&cstart=0&pagesize=100";
+                            "&cstart=0&pagesize=100&sortby=" + sort_by;
             return;
         }
 
@@ -172,7 +179,7 @@ function addGindex() {
     debugLog("duplicate_cites: " + duplicate_cites);
     debugLog("g-index: " + gindex);
 
-    html = '<tr style="font-style:bold">' +
+    html = '<tr style="font-weight:600">' +
            '<td class="gsb_rsb_std">..........</td>' +
            '<td class="gsc_rsb_std">..........</td>' +
            '<td class="gsc_rsb_std">..........</td>' + '</tr>';
@@ -375,7 +382,7 @@ function loadNextPage() {
 
 function loadAllCitationPages() {
     if (jQuery("head").data("all_pages_loaded") == 1) {
-        window.clearTimeout(main_timer);
+        // window.clearTimeout(main_timer);
         window.clearInterval(load_next_page_timer);
         return;
     }
@@ -393,7 +400,7 @@ function loadAllCitationPages() {
         debugLog('all pages loaded');
 
         if (jQuery("head").data("gindexed") != 1) {
-            window.clearTimeout(main_timer);
+            // window.clearTimeout(main_timer);
             showPopup("Calculating G-index ...", config.good_popup_color);
             addGindex();
             jQuery("div[id*='spinner_']").remove();
