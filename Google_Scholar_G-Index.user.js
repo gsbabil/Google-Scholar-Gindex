@@ -8,33 +8,32 @@
 // @downloadURL    https://github.com/gsbabil/google-scholar-gindex/raw/master/Google_Scholar_G-Index.user.js
 // @iconURL        https://gravatar.com/avatar/10f6c9d84191bcbe69ce41177087c4d7
 // @author         Babil Golam Sarwar <gsbabil@gmail.com>
-// @version        0.0.9
 // @version        0.0.10
 // ==/UserScript==
 
 /* Bookmarklet code */
 /********************
 
-javascript:(function(){d=document;s=d.createElement("script");s.src="https://github.com/gsbabil/google-scholar-gindex/raw/master/Google_Scholar_G-Index.user.js?_"+new%20Date().getTime();d.getElementsByTagName("head")[0].appendChild(s);})();
 javascript:(function(){d=document;s=d.createElement("script");s.src="https://cdn.rawgit.com/gsbabil/google-scholar-gindex/master/Google_Scholar_G-Index.user.js?_"+new%20Date().getTime();d.getElementsByTagName("head")[0].appendChild(s);})();
 
 *********************/
 
-var config =
-    {
-      'jquery_url' : 'https://code.jquery.com/jquery.js',
-      'spinner' : 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHdpZHRoPScxNnB4JyBoZWlnaHQ9JzE2cHgnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIiBjbGFzcz0idWlsLXJpbmciPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSJub25lIiBjbGFzcz0iYmsiPjwvcmVjdD48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MiIgc3Ryb2tlLWRhc2hhcnJheT0iMTcxLjUzMDk1ODg4NjAwMjcgOTIuMzYyODI0MDE1NTM5OTMiIHN0cm9rZT0iI2M1NTIzZiIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxNiI%2BPGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJyb3RhdGUiIHZhbHVlcz0iMCA1MCA1MDsxODAgNTAgNTA7MzYwIDUwIDUwOyIga2V5VGltZXM9IjA7MC41OzEiIGR1cj0iMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBiZWdpbj0iMHMiPjwvYW5pbWF0ZVRyYW5zZm9ybT48L2NpcmNsZT48L3N2Zz4%3D',
-      'good_popup_color' : '#ADDD44',
-      'bad_popup_color' : '#FF8400',
-      'show_more_selector' : 'button#gsc_bpf_more',
-      'total_publications_selector' : 'tr.gsc_a_tr',
-      'citation_selector' : 'a[href*="cites="]',
-      'duplicate_citation_selector' : 'a[onclick*="gsc_md_show_cbyd"]',
-      'google_total_citation_selector' :
-          'a[title*="This is the number of citations to all publications."]',
-      'citation_indices_table_selector' : 'table#gsc_rsb_st > tbody > tr',
-      'debug' : true,
-    }
+var config = {
+    'jquery_url' : 'https://code.jquery.com/jquery.js',
+    'spinner' :
+        'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHdpZHRoPScxNnB4JyBoZWlnaHQ9JzE2cHgnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIiBjbGFzcz0idWlsLXJpbmciPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSJub25lIiBjbGFzcz0iYmsiPjwvcmVjdD48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MiIgc3Ryb2tlLWRhc2hhcnJheT0iMTcxLjUzMDk1ODg4NjAwMjcgOTIuMzYyODI0MDE1NTM5OTMiIHN0cm9rZT0iI2M1NTIzZiIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxNiI%2BPGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJyb3RhdGUiIHZhbHVlcz0iMCA1MCA1MDsxODAgNTAgNTA7MzYwIDUwIDUwOyIga2V5VGltZXM9IjA7MC41OzEiIGR1cj0iMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBiZWdpbj0iMHMiPjwvYW5pbWF0ZVRyYW5zZm9ybT48L2NpcmNsZT48L3N2Zz4%3D',
+    'good_popup_color' : '#C6FF00',
+    'bad_popup_color' : '#FFC107',
+    'show_more_selector' : 'button#gsc_bpf_more',
+    'total_publications_selector' : 'tr.gsc_a_tr',
+    'citation_selector' : 'a[href*="cites="]',
+    'duplicate_citation_selector' : 'a[onclick*="gsc_md_show_cbyd"]',
+    'google_total_citation_selector' :
+        'a[title*="This is the number of citations to all publications."]',
+    'citation_indices_table_selector' : 'table#gsc_rsb_st > tbody > tr',
+    'popup_font_url' : 'https://fonts.googleapis.com/css?family=Glegoo',
+    'debug' : true,
+};
 
 var gindex = 0;
 var hindex = 0;
@@ -55,6 +54,9 @@ function main() {
     }
 
     if (window.jQuery) {
+        /* Babil: load custom font for popups */
+        addCustomFont(config.popup_font_url);
+
         /* Babil: when in bookmark-let, check if we are on the right page */
         if (location.hostname.indexOf("scholar.google.com") < 0 &&
             location.href.indexOf("user=") < 0) {
@@ -92,8 +94,8 @@ function main() {
         }
 
         spinner = jQuery("div[id*='spinner_']");
-        if (jQuery(spinner).length == 0) {
-            var spinner = showSpinner(jQuery('body'), new Date().getTime());
+        if (jQuery(spinner).length === 0) {
+            spinner = showSpinner(jQuery('body'), new Date().getTime());
         }
 
         jQuery(document).ready(function() {
@@ -168,8 +170,8 @@ function addGindex() {
         duplicate_cites = duplicate_cites + num_duplicate_in_link;
     });
 
-    var google_total_cites =
-        parseInt($(config.google_total_citation_selector).parent().next().text());
+    var google_total_cites = parseInt(
+        $(config.google_total_citation_selector).parent().next().text());
     var effective_total_cites = total_cites - duplicate_cites;
 
     var total_pubs = jQuery(config.total_publications_selector).length;
@@ -185,52 +187,52 @@ function addGindex() {
            '<td class="gsb_rsb_std">..........</td>' +
            '<td class="gsc_rsb_std">..........</td>' +
            '<td class="gsc_rsb_std">..........</td>' + '</tr>';
-    jQuery(html)
-        .appendTo(jQuery(config.citation_indices_table_selector).last().parent());
+    jQuery(html).appendTo(
+        jQuery(config.citation_indices_table_selector).last().parent());
 
     html = '<tr>' + '<td class="gsb_rsb_std"><a href=' +
            'https://en.m.wikipedia.org/wiki/G-index>g-index</a></td>' +
            '<td class="gsc_rsb_std">' + gindex + '</td>' +
            '<td class="gsc_rsb_std">n/a</td>' + '</tr>';
-    jQuery(html)
-        .appendTo(jQuery(config.citation_indices_table_selector).last().parent());
+    jQuery(html).appendTo(
+        jQuery(config.citation_indices_table_selector).last().parent());
 
     html = '<tr>' + '<td class="gsb_rsb_sc1">Publications with Citations</td>' +
            '<td class="gsc_rsb_std">' + pubs_with_cites + '</td>' +
            '<td class="gsc_rsb_std">n/a</td>' + '</tr>';
-    jQuery(html)
-        .appendTo(jQuery(config.citation_indices_table_selector).last().parent());
+    jQuery(html).appendTo(
+        jQuery(config.citation_indices_table_selector).last().parent());
 
     html = '<tr>' +
            '<td class="gsb_rsb_sc1">Publications without Citations</td>' +
            '<td class="gsc_rsb_std">' + (total_pubs - pubs_with_cites) +
            '</td>' + '<td class="gsc_rsb_std">n/a</td>' + '</tr>';
-    jQuery(html)
-        .appendTo(jQuery(config.citation_indices_table_selector).last().parent());
+    jQuery(html).appendTo(
+        jQuery(config.citation_indices_table_selector).last().parent());
 
     html = '<tr>' + '<td class="gsb_rsb_sc1">Total Publications</td>' +
            '<td class="gsc_rsb_std">' + total_pubs + '</td>' +
            '<td class="gsc_rsb_std">n/a</td>' + '</tr>';
-    jQuery(html)
-        .appendTo(jQuery(config.citation_indices_table_selector).last().parent());
+    jQuery(html).appendTo(
+        jQuery(config.citation_indices_table_selector).last().parent());
 
     html = '<tr>' + '<td class="gsb_rsb_sc1">Total Counted Citations</td>' +
            '<td class="gsc_rsb_std">' + total_cites + '</td>' +
            '<td class="gsc_rsb_std">n/a</td>' + '</tr>';
-    jQuery(html)
-        .appendTo(jQuery(config.citation_indices_table_selector).last().parent());
+    jQuery(html).appendTo(
+        jQuery(config.citation_indices_table_selector).last().parent());
 
     html = '<tr>' + '<td class="gsb_rsb_sc1">Duplicate Citations</td>' +
            '<td class="gsc_rsb_std">' + duplicate_cites + '</td>' +
            '<td class="gsc_rsb_std">n/a</td>' + '</tr>';
-    jQuery(html)
-        .appendTo(jQuery(config.citation_indices_table_selector).last().parent());
+    jQuery(html).appendTo(
+        jQuery(config.citation_indices_table_selector).last().parent());
 
     html = '<tr>' + '<td class="gsb_rsb_sc1">Effective Total Citations</td>' +
            '<td class="gsc_rsb_std">' + effective_total_cites + '</td>' +
            '<td class="gsc_rsb_std">n/a</td>' + '</tr>';
-    jQuery(html)
-        .appendTo(jQuery(config.citation_indices_table_selector).last().parent());
+    jQuery(html).appendTo(
+        jQuery(config.citation_indices_table_selector).last().parent());
 
     if (effective_total_cites != google_total_cites) {
         html =
@@ -243,11 +245,16 @@ function addGindex() {
             '<a href=https://www.google.com.au/search?q=firefox+hard+refresh>' +
             '"hard refresh"</a> this page to get the correct calculation.</i>' +
             '</td></tr>';
-        jQuery(html)
-            .appendTo(jQuery(config.citation_indices_table_selector).last().parent());
+        jQuery(html).appendTo(
+            jQuery(config.citation_indices_table_selector).last().parent());
     }
 
     jQuery("head").data("gindexed", 1);
+}
+
+function addCustomFont(font_url) {
+    $("head").append("<link href='" + font_url +
+                     "' rel='stylesheet' type='text/css'>");
 }
 
 function spinnerCss() {
@@ -298,11 +305,12 @@ function popupCss(color) {
             'border-width' : '1.5px',
             'text-align' : 'center',
             'z-index' : '10000',
-            'opacity' : '0.85',
+            'opacity' : '1.0',
             'color' : 'black',
             'min-width' : '14em',
-            'font-size' : '14px',
-            'font-weight' : '600',
+            'font-family' : 'Glegoo, Serif',
+            'font-size' : '16px',
+            'font-weight' : 600,
         });
 }
 
