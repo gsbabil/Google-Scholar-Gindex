@@ -26,7 +26,7 @@ G-Index beneath the H-Index and i10-Index on the same page.
 whole Java-script code below, drag and drop it on your bookmark-bar.
 
 ```javascript
-javascript:(function(){d=document;s=d.createElement("script"); s.src="https://raw.github.com/gsbabil/Google-Scholar-Gindex/master/Google_Scholar_G-Index.user.js?_"+new Date().getTime(); d.getElementsByTagName("head")[0].appendChild(s);})();
+javascript:(function(){d=document;s=d.createElement("script");s.src="https://cdn.rawgit.com/gsbabil/google-scholar-gindex/master/Google_Scholar_G-Index.user.js?_"+new%20Date().getTime();d.getElementsByTagName("head")[0].appendChild(s);})();
 ```
 
  - Here's a screen-shot showing how to add the bookmark in Google Chrome:

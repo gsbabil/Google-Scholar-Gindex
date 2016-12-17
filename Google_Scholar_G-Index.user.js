@@ -9,12 +9,14 @@
 // @iconURL        https://gravatar.com/avatar/10f6c9d84191bcbe69ce41177087c4d7
 // @author         Babil Golam Sarwar <gsbabil@gmail.com>
 // @version        0.0.9
+// @version        0.0.10
 // ==/UserScript==
 
 /* Bookmarklet code */
 /********************
 
 javascript:(function(){d=document;s=d.createElement("script");s.src="https://github.com/gsbabil/google-scholar-gindex/raw/master/Google_Scholar_G-Index.user.js?_"+new%20Date().getTime();d.getElementsByTagName("head")[0].appendChild(s);})();
+javascript:(function(){d=document;s=d.createElement("script");s.src="https://cdn.rawgit.com/gsbabil/google-scholar-gindex/master/Google_Scholar_G-Index.user.js?_"+new%20Date().getTime();d.getElementsByTagName("head")[0].appendChild(s);})();
 
 *********************/
 
