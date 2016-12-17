@@ -43,7 +43,6 @@ var load_next_page_timer = null;
 var spinner = null;
 var pages_loaded = 1;
 
-
 main();
 
 function main() {
@@ -73,7 +72,16 @@ function main() {
         }
         debugLog("sort_by:" + sort_by);
 
-        /* Babil: check if the user is paranoid */
+        /* Babil: check if the user is viewing citations for a single
+         * publication */
+        var citation_for_view = getURLParameter('citation_for_view');
+        if (citation_for_view !== undefined) {
+            showPopup("Skipping G-Index calculation", config.bad_popup_color);
+            return;
+        }
+
+        /* Babil: check if the user is paranoid and trying to calculate G-Index
+         * on the same page multiple times */
         if (jQuery("head").data("gindexed") == 1 ||
             jQuery("tr.gindex").length > 0) {
             showPopup("G-Index already added.", config.bad_popup_color);
@@ -309,7 +317,7 @@ function popupCss(color) {
             'color' : 'black',
             'min-width' : '14em',
             'font-family' : 'Glegoo, Serif',
-            'font-size' : '16px',
+            'font-size' : '15px',
             'font-weight' : 600,
         });
 }
@@ -328,7 +336,7 @@ function showPopup(text, color) {
 }
 
 function debugLog(msg, ignore) {
-    if (config.debug == true || ignore == true) {
+    if (config.debug === true || ignore === true) {
         console.debug(msg);
     }
 }
@@ -348,7 +356,6 @@ function loadNextPage() {
             var href = next[next.length - 1].href;
             var cstart =
                 href.replace(new RegExp('.*cstart=(\\d+)$', 'i'), '$1');
-            var cstart = start_from;
             var id = "loadNextPage_" + cstart;
             debugLog("loadNextPage --> href: " + href);
             debugLog("loadNextPage --> prev_href: " + prev_href);
@@ -398,7 +405,7 @@ function loadAllCitationPages() {
     }
 
     var show_more = jQuery(config.show_more_selector)[0];
-    if (show_more.disabled == false) {
+    if (show_more.disabled === false) {
         show_more.click();
         pages_loaded = pages_loaded + 1;
         showPopup("Loading citation page: " + pages_loaded,
