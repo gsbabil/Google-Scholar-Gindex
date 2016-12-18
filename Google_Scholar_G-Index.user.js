@@ -3,15 +3,15 @@
 // @namespace      https://github.com/gsbabil
 // @description    Adds G-Index and publication count in Google scholar profile
 // @require        https://code.jquery.com/jquery.js
-// @include        https://scholar.google.com*/citations?*user=*
+// @include        https://scholar.google.*/citations?*user=*
 // @updateURL      https://github.com/gsbabil/google-scholar-gindex/raw/master/Google_Scholar_G-Index.user.js
 // @downloadURL    https://github.com/gsbabil/google-scholar-gindex/raw/master/Google_Scholar_G-Index.user.js
 // @iconURL        https://gravatar.com/avatar/10f6c9d84191bcbe69ce41177087c4d7
 // @author         Babil Golam Sarwar <gsbabil@gmail.com>
-// @version        0.0.10
+// @version        0.0.11
 // ==/UserScript==
 
-/* Bookmarklet code */
+/* Bookmarklet Code */
 /********************
 
 javascript:(function(){d=document;s=d.createElement("script");s.src="https://cdn.rawgit.com/gsbabil/google-scholar-gindex/master/Google_Scholar_G-Index.user.js?_"+new%20Date().getTime();d.getElementsByTagName("head")[0].appendChild(s);})();
@@ -24,13 +24,15 @@ var config = {
         'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHdpZHRoPScxNnB4JyBoZWlnaHQ9JzE2cHgnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIiBjbGFzcz0idWlsLXJpbmciPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSJub25lIiBjbGFzcz0iYmsiPjwvcmVjdD48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MiIgc3Ryb2tlLWRhc2hhcnJheT0iMTcxLjUzMDk1ODg4NjAwMjcgOTIuMzYyODI0MDE1NTM5OTMiIHN0cm9rZT0iI2M1NTIzZiIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxNiI%2BPGFuaW1hdGVUcmFuc2Zvcm0gYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiB0eXBlPSJyb3RhdGUiIHZhbHVlcz0iMCA1MCA1MDsxODAgNTAgNTA7MzYwIDUwIDUwOyIga2V5VGltZXM9IjA7MC41OzEiIGR1cj0iMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBiZWdpbj0iMHMiPjwvYW5pbWF0ZVRyYW5zZm9ybT48L2NpcmNsZT48L3N2Zz4%3D',
     'good_popup_color' : '#C6FF00',
     'bad_popup_color' : '#FFC107',
-    'show_more_selector' : 'button#gsc_bpf_more',
+    'show_more_selector' : '#gsc_bpf_more',
     'total_publications_selector' : 'tr.gsc_a_tr',
     'citation_selector' : 'a[href*="cites="]',
     'duplicate_citation_selector' : 'a[onclick*="gsc_md_show_cbyd"]',
     'google_total_citation_selector' :
-        'a[title*="This is the number of citations to all publications."]',
-    'citation_indices_table_selector' : 'table#gsc_rsb_st > tbody > tr',
+        '#gsc_rsb_st > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2)',
+    'location_hostname_selector' : 'scholar.google.',
+    'citation_indices_table_selector' :
+        '#gsc_rsb_st > tbody:nth-child(1) > tr:nth-child(1)',
     'popup_font_url' : 'https://fonts.googleapis.com/css?family=Glegoo',
     'debug' : true,
 };
@@ -57,7 +59,7 @@ function main() {
         addCustomFont(config.popup_font_url);
 
         /* Babil: when in bookmark-let, check if we are on the right page */
-        if (location.hostname.indexOf("scholar.google.com") < 0 &&
+        if (location.hostname.indexOf(config.location_hostname_selector) < 0 &&
             location.href.indexOf("user=") < 0) {
             showPopup(
                 "Current page is <b>not</b> a <br /> Google scholar profile.",
@@ -179,7 +181,7 @@ function addGindex() {
     });
 
     var google_total_cites = parseInt(
-        $(config.google_total_citation_selector).parent().next().text());
+        $(config.google_total_citation_selector).text());
     var effective_total_cites = total_cites - duplicate_cites;
 
     var total_pubs = jQuery(config.total_publications_selector).length;
