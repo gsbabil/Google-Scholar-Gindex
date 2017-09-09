@@ -4,11 +4,12 @@
 // @description    Adds G-Index and publication count in Google scholar profile
 // @require        https://code.jquery.com/jquery.js
 // @include        https://scholar.google.*/citations?*user=*
+// @exclude        https://scholar.google.com/citations?view_op=list_updates*
 // @updateURL      https://github.com/gsbabil/google-scholar-gindex/raw/master/Google_Scholar_G-Index.user.js
 // @downloadURL    https://github.com/gsbabil/google-scholar-gindex/raw/master/Google_Scholar_G-Index.user.js
 // @iconURL        https://gravatar.com/avatar/10f6c9d84191bcbe69ce41177087c4d7
 // @author         Babil Golam Sarwar <gsbabil@gmail.com>
-// @version        0.0.11
+// @version        0.0.12
 // ==/UserScript==
 
 /* Bookmarklet Code */
